@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SkunkScrape – Meta Business Connect</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #0f172a;
+            color: #f1f5f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .card {
+            background: #1e293b;
+            padding: 2rem;
+            border-radius: 12px;
+            width: 420px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+        }
+
+        button {
+            background: #1877f2;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        button:hover {
+            opacity: 0.9;
+        }
+
+        .profile {
+            margin-top: 20px;
+        }
+
+        img {
+            border-radius: 50%;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <h2>SkunkScrape</h2>
+    <p>Connect Meta Business Account</p>
+
+    <button onclick="loginWithFacebook()">Login with Facebook</button>
+
+    <div id="profile" class="profile"></div>
+</div>
+
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '1036933855280612',
+      cookie     : true,
+      xfbml      : true,
+      version    : 'v24.0'
+    });
+
+    FB.AppEvents.logPageView();
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s);
+     js.id = id;
+     js.src = "https://connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+
+  function loginWithFacebook() {
+    FB.login(function(response) {
+      if (response.authResponse) {
+        fetchUserProfile();
+      } else {
+        alert("Login cancelled.");
+      }
+    }, {
+      scope: 'public_profile'
+    });
+  }
+
+  function fetchUserProfile() {
+    FB.api('/me', { fields: 'id,name,picture' }, function(response) {
+      const profileDiv = document.getElementById('profile');
+      profileDiv.innerHTML = `
+        <h3>Connected User</h3>
+        <p><strong>Name:</strong> ${response.name}</p>
+        <p><strong>ID:</strong> ${response.id}</p>
+        <img src="${response.picture.data.url}" width="100" />
+      `;
+    });
+  }
+</script>
+
+</body>
+</html>
