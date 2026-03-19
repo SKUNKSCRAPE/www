@@ -1,112 +1,680 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-ZA">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SkunkScrape – Meta Business Connect</title>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SkunkScrape | Lead Discovery, Contact Extraction & South Africa Focused Web Sourcing</title>
+  <meta name="description" content="SkunkScrape helps teams discover lead sources, extract contact signals, normalize South African mobile numbers, suppress DNC records, and export dialer-ready lead data through a GUI, CLI, and collector workflow." />
+  <meta name="keywords" content="SkunkScrape, lead scraping, contact extraction, South Africa leads, web scraping, lead discovery, dialer-ready exports, DNC suppression, prospecting automation, Skunkworks" />
+  <meta name="author" content="Skunkworks (Pty) Ltd" />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  <meta name="googlebot" content="index, follow" />
+  <meta name="bingbot" content="index, follow" />
+  <meta name="theme-color" content="#0b1020" />
+  <meta name="application-name" content="SkunkScrape" />
+  <meta name="apple-mobile-web-app-title" content="SkunkScrape" />
+  <meta name="format-detection" content="telephone=yes, email=yes, address=yes" />
+  <meta name="geo.region" content="ZA-GP" />
+  <meta name="geo.placename" content="Germiston, Gauteng, South Africa" />
+  <meta name="ICBM" content="-26.2236, 28.1768" />
+  <meta name="geo.position" content="-26.2236;28.1768" />
 
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #0f172a;
-            color: #f1f5f9;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
+  <link rel="canonical" href="https://www.skunkscrape.com/" />
+  <link rel="alternate" hreflang="en-za" href="https://www.skunkscrape.com/" />
+  <link rel="icon" href="./favicon.ico" />
+  <link rel="apple-touch-icon" href="./apple-touch-icon.png" />
 
-        .card {
-            background: #1e293b;
-            padding: 2rem;
-            border-radius: 12px;
-            width: 420px;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
-        }
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="en_ZA" />
+  <meta property="og:site_name" content="SkunkScrape" />
+  <meta property="og:title" content="SkunkScrape | Lead Discovery, Contact Extraction & ZA-Focused Sourcing" />
+  <meta property="og:description" content="A Skunkworks-built scraping and collection platform for lead discovery, contact extraction, South African mobile normalization, DNC suppression, and dialer-ready exports." />
+  <meta property="og:url" content="https://www.skunkscrape.com/" />
+  <meta property="og:image" content="https://www.skunkscrape.com/assets/og/skunkscrape-social-cover.jpg" />
+  <meta property="og:image:alt" content="SkunkScrape dashboard and lead discovery interface" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
 
-        button {
-            background: #1877f2;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 6px;
-            cursor: pointer;
-            margin-top: 15px;
-            font-weight: bold;
-        }
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="SkunkScrape | Lead Discovery, Contact Extraction & ZA-Focused Sourcing" />
+  <meta name="twitter:description" content="Discover sources, extract contacts, normalize ZA mobile numbers, suppress DNC, and export dialer-ready leads." />
+  <meta name="twitter:image" content="https://www.skunkscrape.com/assets/og/skunkscrape-social-cover.jpg" />
+  <meta name="twitter:image:alt" content="SkunkScrape dashboard and lead discovery interface" />
 
-        button:hover {
-            opacity: 0.9;
-        }
+  <meta name="twitter:site" content="@skunkworksaf" />
+  <meta name="twitter:creator" content="@skunkworksaf" />
 
-        .profile {
-            margin-top: 20px;
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://www.skunkscrape.com/#organization",
+        "name": "Skunkworks (Pty) Ltd",
+        "url": "https://www.skunkworks.africa/",
+        "logo": "https://www.skunkscrape.com/assets/logo/skunkscrape-logo.png",
+        "telephone": "+27-83-380-7950",
+        "email": "raydo@skunkworks.africa",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "26 2nd Avenue",
+          "addressLocality": "Germiston",
+          "addressRegion": "Gauteng",
+          "postalCode": "1401",
+          "addressCountry": "ZA"
+        },
+        "sameAs": [
+          "https://www.skunkworks.africa/",
+          "https://www.credly.com/users/raydo-matthee/",
+          "https://www.kickresume.com/cv/Raydo-M/"
+        ]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://www.skunkscrape.com/#website",
+        "url": "https://www.skunkscrape.com/",
+        "name": "SkunkScrape",
+        "publisher": {
+          "@id": "https://www.skunkscrape.com/#organization"
+        },
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://www.skunkscrape.com/search?q={search_term_string}",
+          "query-input": "required name=search_term_string"
         }
+      },
+      {
+        "@type": "SoftwareApplication",
+        "@id": "https://www.skunkscrape.com/#software",
+        "name": "SkunkScrape",
+        "applicationCategory": "BusinessApplication",
+        "applicationSubCategory": "Lead Discovery and Contact Extraction",
+        "operatingSystem": "Windows, Python",
+        "url": "https://www.skunkscrape.com/",
+        "description": "SkunkScrape is a lead discovery and web sourcing platform with GUI and CLI workflows for source discovery, contact extraction, South African mobile normalization, DNC suppression, and dialer-ready exports.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "ZAR",
+          "availability": "https://schema.org/PreOrder"
+        },
+        "creator": {
+          "@id": "https://www.skunkscrape.com/#organization"
+        },
+        "featureList": [
+          "GUI launcher and CLI orchestration",
+          "South Africa focused source discovery",
+          "Contact extraction and normalization",
+          "Robots-aware scraping workflow",
+          "DNC suppression",
+          "Dialer-ready CSV export"
+        ]
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://www.skunkscrape.com/#breadcrumbs",
+        "itemListElement": [
+          {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.skunkscrape.com/"},
+          {"@type": "ListItem", "position": 2, "name": "Platform", "item": "https://www.skunkscrape.com/#platform"},
+          {"@type": "ListItem", "position": 3, "name": "FAQ", "item": "https://www.skunkscrape.com/#faq"}
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://www.skunkscrape.com/#faqpage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What does SkunkScrape do?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "SkunkScrape discovers target websites, extracts contact signals, normalizes South African mobile numbers, applies DNC suppression, and prepares dialer-ready exports for outreach operations."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is SkunkScrape South Africa focused?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. The discovery workflows include South African domain patterns, ZA mobile number detection, and localized sourcing strategies tailored to the South African market."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does SkunkScrape support compliant workflows?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The project includes conservative, robots-aware collection patterns and DNC suppression support. Teams should still validate their legal, POPIA, and platform-specific compliance requirements before production use."
+            }
+          }
+        ]
+      },
+      {
+        "@type": "LocalBusiness",
+        "@id": "https://www.skunkscrape.com/#localbusiness",
+        "name": "Skunkworks (Pty) Ltd",
+        "url": "https://www.skunkworks.africa/",
+        "image": "https://www.skunkscrape.com/assets/logo/skunkscrape-logo.png",
+        "telephone": "+27-83-380-7950",
+        "email": "raydo@skunkworks.africa",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "26 2nd Avenue",
+          "addressLocality": "Germiston",
+          "addressRegion": "Gauteng",
+          "postalCode": "1401",
+          "addressCountry": "ZA"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": -26.2236,
+          "longitude": 28.1768
+        },
+        "areaServed": ["South Africa", "Botswana", "Rwanda", "Cameroon", "Portugal", "Mexico"]
+      }
+    ]
+  }
+  </script>
 
-        img {
-            border-radius: 50%;
-            margin-top: 10px;
-        }
-    </style>
+  <style>
+    :root {
+      --bg: #07111f;
+      --panel: rgba(10, 19, 36, 0.78);
+      --panel-2: rgba(17, 28, 52, 0.92);
+      --text: #eaf1ff;
+      --muted: #9cb0d8;
+      --line: rgba(146, 170, 222, 0.18);
+      --primary: #77f7c3;
+      --primary-2: #58b7ff;
+      --accent: #c98dff;
+      --shadow: 0 22px 70px rgba(0,0,0,.35);
+      --radius: 22px;
+      --max: 1220px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(88,183,255,.18), transparent 28%),
+        radial-gradient(circle at 80% 0%, rgba(201,141,255,.12), transparent 24%),
+        linear-gradient(180deg, #07111f 0%, #0a1324 45%, #08101c 100%);
+      line-height: 1.6;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    .container { width: min(calc(100% - 32px), var(--max)); margin: 0 auto; }
+    .topbar {
+      position: sticky; top: 0; z-index: 50;
+      backdrop-filter: blur(16px);
+      background: rgba(7, 17, 31, .72);
+      border-bottom: 1px solid var(--line);
+    }
+    .topbar-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 20px; padding: 14px 0;
+    }
+    .brand { display: flex; align-items: center; gap: 14px; font-weight: 800; letter-spacing: .02em; }
+    .brand-mark {
+      width: 44px; height: 44px; border-radius: 14px;
+      display: grid; place-items: center;
+      background: linear-gradient(135deg, rgba(119,247,195,.22), rgba(88,183,255,.22));
+      border: 1px solid rgba(119,247,195,.22);
+      box-shadow: var(--shadow);
+      font-size: 1.25rem;
+    }
+    .nav { display: flex; gap: 18px; align-items: center; flex-wrap: wrap; }
+    .nav a { color: var(--muted); font-size: .96rem; }
+    .nav a:hover { color: var(--text); }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+      padding: 14px 20px; border-radius: 14px; border: 1px solid transparent;
+      font-weight: 700; transition: .2s ease; cursor: pointer;
+    }
+    .btn:hover { transform: translateY(-1px); }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), var(--primary-2));
+      color: #07111f; box-shadow: 0 16px 40px rgba(88,183,255,.18);
+    }
+    .btn-secondary {
+      border-color: var(--line); color: var(--text); background: rgba(255,255,255,.03);
+    }
+    .hero { padding: 76px 0 38px; }
+    .hero-grid {
+      display: grid; grid-template-columns: 1.2fr .9fr; gap: 28px; align-items: stretch;
+    }
+    .hero-copy, .hero-card, .card, .faq-item, .map-card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+    }
+    .hero-copy { padding: 34px; }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 8px 12px; border-radius: 999px;
+      background: rgba(119,247,195,.08); color: var(--primary); border: 1px solid rgba(119,247,195,.18);
+      font-size: .88rem; font-weight: 700; letter-spacing: .03em; text-transform: uppercase;
+    }
+    h1, h2, h3 { margin: 0 0 14px; line-height: 1.1; }
+    h1 { font-size: clamp(2.3rem, 5vw, 4.5rem); letter-spacing: -.04em; }
+    h2 { font-size: clamp(1.7rem, 3vw, 2.8rem); letter-spacing: -.03em; }
+    h3 { font-size: 1.15rem; }
+    .lead { font-size: 1.08rem; color: var(--muted); max-width: 62ch; }
+    .cta-row { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 26px; }
+    .trust-row {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 26px;
+    }
+    .trust-pill {
+      padding: 14px; border-radius: 16px; border: 1px solid var(--line);
+      background: rgba(255,255,255,.03); color: var(--muted); font-weight: 600; text-align: center;
+    }
+    .hero-card { padding: 24px; position: relative; overflow: hidden; }
+    .hero-card::before {
+      content: ""; position: absolute; inset: auto -60px -60px auto; width: 220px; height: 220px;
+      background: radial-gradient(circle, rgba(119,247,195,.18), transparent 60%);
+      pointer-events: none;
+    }
+    .metric-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 18px; }
+    .metric {
+      padding: 18px; border-radius: 18px; background: var(--panel-2); border: 1px solid var(--line);
+    }
+    .metric strong { display: block; font-size: 1.7rem; margin-bottom: 6px; }
+    .metric span { color: var(--muted); font-size: .94rem; }
+    .hero-list { margin: 18px 0 0; padding: 0; list-style: none; }
+    .hero-list li { display: flex; gap: 10px; margin: 10px 0; color: var(--muted); }
+    .hero-list li::before { content: "✓"; color: var(--primary); font-weight: 800; }
+
+    section { padding: 28px 0; }
+    .section-head { margin-bottom: 20px; max-width: 70ch; }
+    .section-head p { color: var(--muted); margin: 0; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+    .card { padding: 22px; }
+    .icon {
+      width: 48px; height: 48px; border-radius: 16px; display: grid; place-items: center; margin-bottom: 16px;
+      background: linear-gradient(135deg, rgba(119,247,195,.14), rgba(88,183,255,.14));
+      border: 1px solid rgba(119,247,195,.16); font-weight: 800;
+    }
+    .card p, .stat-list li, .faq-item p, .timeline li, .seo-list li, footer p { color: var(--muted); }
+    .pill-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+    .pill { padding: 9px 12px; border-radius: 999px; background: rgba(255,255,255,.04); border: 1px solid var(--line); color: var(--muted); font-size: .92rem; }
+    .stat-list, .timeline, .seo-list { padding-left: 18px; margin: 12px 0 0; }
+
+    .platform {
+      display: grid; grid-template-columns: 1.1fr .9fr; gap: 18px; align-items: stretch;
+    }
+    .code-window {
+      padding: 22px; border-radius: var(--radius); background: #050c17; border: 1px solid var(--line);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; overflow: auto;
+      color: #ccdbff;
+    }
+    .code-window .prompt { color: var(--primary); }
+
+    .faq-wrap { display: grid; gap: 14px; }
+    .faq-item { padding: 20px 22px; }
+    .faq-item h3 { margin-bottom: 10px; }
+
+    .cta-band {
+      padding: 28px; border-radius: calc(var(--radius) + 4px);
+      background: linear-gradient(135deg, rgba(119,247,195,.12), rgba(88,183,255,.14), rgba(201,141,255,.14));
+      border: 1px solid rgba(119,247,195,.18);
+      box-shadow: var(--shadow);
+    }
+    .cta-band p { color: #dce7ff; max-width: 64ch; }
+
+    .map-card { overflow: hidden; }
+    .map-card iframe { width: 100%; min-height: 360px; border: 0; display: block; }
+    .map-body { padding: 22px; }
+    .micro { font-size: .92rem; color: var(--muted); }
+
+    footer { padding: 26px 0 60px; }
+    .footer-grid {
+      display: grid; grid-template-columns: 1.1fr .8fr .8fr; gap: 20px; align-items: start;
+    }
+    .footer-links { display: grid; gap: 8px; }
+    .footer-links a { color: var(--muted); }
+    .footer-links a:hover { color: var(--text); }
+    .tiny { font-size: .85rem; color: var(--muted); }
+
+    @media (max-width: 980px) {
+      .hero-grid, .platform, .grid-3, .grid-2, .footer-grid { grid-template-columns: 1fr; }
+      .trust-row { grid-template-columns: repeat(2, 1fr); }
+      .nav { display: none; }
+    }
+    @media (max-width: 640px) {
+      .hero { padding-top: 42px; }
+      .hero-copy, .hero-card, .card, .faq-item, .cta-band, .map-body { padding: 20px; }
+      .trust-row, .metric-grid { grid-template-columns: 1fr; }
+      .cta-row { flex-direction: column; }
+      .btn { width: 100%; }
+    }
+  </style>
 </head>
 <body>
+  <header class="topbar" aria-label="Top navigation">
+    <div class="container topbar-inner">
+      <a class="brand" href="#top" aria-label="SkunkScrape home">
+        <span class="brand-mark">🦨</span>
+        <span>SkunkScrape</span>
+      </a>
+      <nav class="nav" aria-label="Primary">
+        <a href="#platform">Platform</a>
+        <a href="#features">Features</a>
+        <a href="#seo">SEO</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <a class="btn btn-primary" href="#contact">Request Demo</a>
+    </div>
+  </header>
 
-<div class="card">
-    <h2>SkunkScrape</h2>
-    <p>Connect Meta Business Account</p>
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <span class="eyebrow">Lead discovery • contact extraction • ZA-ready sourcing</span>
+          <h1>Scrape smarter. Discover better leads. Export faster.</h1>
+          <p class="lead">
+            SkunkScrape is a Skunkworks-built sourcing platform designed to discover target websites,
+            extract contact signals, normalize South African mobile numbers, apply DNC suppression, and
+            prepare dialer-ready exports from a practical GUI, CLI, and collector workflow.
+          </p>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="mailto:raydo@skunkworks.africa?subject=SkunkScrape%20Demo%20Request">Book a Demo</a>
+            <a class="btn btn-secondary" href="https://www.skunkworks.africa/" target="_blank" rel="noopener">Visit Skunkworks</a>
+          </div>
+          <div class="trust-row" aria-label="Key trust indicators">
+            <div class="trust-pill">GUI + CLI workflows</div>
+            <div class="trust-pill">ZA domain discovery</div>
+            <div class="trust-pill">DNC suppression</div>
+            <div class="trust-pill">Dialer-ready exports</div>
+          </div>
+        </div>
+        <aside class="hero-card" aria-label="Product summary">
+          <h2 style="font-size:1.6rem;">Built for operational prospecting teams</h2>
+          <p class="lead" style="font-size:1rem;">
+            The current project already exposes a GUI launcher, CLI orchestration, import/search flows,
+            async scraping, collector inbox processing, and dialer export mechanics within the codebase.
+          </p>
+          <div class="metric-grid">
+            <div class="metric"><strong>GUI</strong><span>Launcher-driven plugin execution</span></div>
+            <div class="metric"><strong>CLI</strong><span>Category, plugin, and batch runs</span></div>
+            <div class="metric"><strong>ZA</strong><span>South African domain and mobile focus</span></div>
+            <div class="metric"><strong>CSV</strong><span>Dialer-ready export workflows</span></div>
+          </div>
+          <ul class="hero-list">
+            <li>Discover contact pages and business sources faster</li>
+            <li>Normalize phone numbers into outreach-ready formats</li>
+            <li>Suppress DNC records before export</li>
+            <li>Stay closer to conservative, robots-aware collection patterns</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
 
-    <button onclick="loginWithFacebook()">Login with Facebook</button>
+    <section id="features">
+      <div class="container">
+        <div class="section-head">
+          <h2>What the landing page is optimized for</h2>
+          <p>
+            This page is structured to rank, share well on social channels, support rich previews,
+            and give search engines enough semantic context to understand SkunkScrape as a software product.
+          </p>
+        </div>
+        <div class="grid-3">
+          <article class="card">
+            <div class="icon">01</div>
+            <h3>Search engine optimization</h3>
+            <p>Canonical URL, title hierarchy, meta description, internal anchors, semantic sections, geo tags, and structured content blocks built for crawlability.</p>
+            <div class="pill-row">
+              <span class="pill">Title tag</span>
+              <span class="pill">Meta description</span>
+              <span class="pill">Canonical</span>
+              <span class="pill">Geo meta</span>
+            </div>
+          </article>
+          <article class="card">
+            <div class="icon">02</div>
+            <h3>Social media preview readiness</h3>
+            <p>Open Graph and Twitter card metadata are included so the page can generate cleaner previews on LinkedIn, Facebook, X, and WhatsApp.</p>
+            <div class="pill-row">
+              <span class="pill">Open Graph</span>
+              <span class="pill">Twitter cards</span>
+              <span class="pill">Image alt</span>
+              <span class="pill">Brand preview</span>
+            </div>
+          </article>
+          <article class="card">
+            <div class="icon">03</div>
+            <h3>Google and local signals</h3>
+            <p>LocalBusiness schema, Organization schema, map embed, address metadata, and geo coordinates help reinforce entity clarity and local relevance.</p>
+            <div class="pill-row">
+              <span class="pill">LocalBusiness</span>
+              <span class="pill">Map embed</span>
+              <span class="pill">Geo coordinates</span>
+              <span class="pill">FAQ schema</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
 
-    <div id="profile" class="profile"></div>
-</div>
+    <section id="platform">
+      <div class="container platform">
+        <div class="card">
+          <div class="section-head" style="margin-bottom:0;">
+            <h2>Platform-aligned positioning</h2>
+            <p>
+              The page copy aligns with the current codebase direction: launcher-based execution, CLI orchestration,
+              import/search, async source discovery, collector workflows, and dialer-oriented exports.
+            </p>
+          </div>
+          <ul class="timeline">
+            <li><strong>Launcher workflow:</strong> the GUI exposes category and plugin selection, optional URL input, crawl depth, and webhook toggles.</li>
+            <li><strong>CLI workflow:</strong> the orchestrator supports single-plugin, category-wide, or full runs with target lead and webhook options.</li>
+            <li><strong>Discovery workflow:</strong> import, DuckDuckGo seed search, contact extraction, and domain deduplication support broader sourcing operations.</li>
+            <li><strong>Collector workflow:</strong> inbox CSV monitoring, DNC suppression, scoring, learning, and dialer export logic support downstream operations.</li>
+          </ul>
+        </div>
+        <div class="code-window" aria-label="Example product workflow">
+<span class="prompt">$</span> python main.py --category discovery --url "accountants johannesburg" --target-leads 500
 
-<script>
-  window.fbAsyncInit = function() {
-    FB.init({
-      appId      : '1036933855280612',
-      cookie     : true,
-      xfbml      : true,
-      version    : 'v24.0'
-    });
+<span class="prompt">$</span> python skunkscrape_final.py
 
-    FB.AppEvents.logPageView();
-  };
+1. Import URLs or run search
+2. Discover contact pages and numbers
+3. Normalize ZA mobile numbers
+4. Suppress DNC records
+5. Score lead quality
+6. Export dialer-ready CSV
+        </div>
+      </div>
+    </section>
 
-  (function(d, s, id){
-     var js, fjs = d.getElementsByTagName(s)[0];
-     if (d.getElementById(id)) {return;}
-     js = d.createElement(s);
-     js.id = id;
-     js.src = "https://connect.facebook.net/en_US/sdk.js";
-     fjs.parentNode.insertBefore(js, fjs);
-   }(document, 'script', 'facebook-jssdk'));
+    <section>
+      <div class="container">
+        <div class="section-head">
+          <h2>Core value propositions</h2>
+          <p>Use this section as the primary conversion narrative for prospects evaluating SkunkScrape against generic scraping stacks or manual list-building workflows.</p>
+        </div>
+        <div class="grid-3">
+          <article class="card">
+            <h3>Faster source discovery</h3>
+            <p>Find likely contact, directory, listings, jobs, and marketplace pages without relying entirely on manual research.</p>
+          </article>
+          <article class="card">
+            <h3>Cleaner outreach preparation</h3>
+            <p>Convert raw contact signals into normalized, better-structured records that are more useful for operations and sales teams.</p>
+          </article>
+          <article class="card">
+            <h3>South Africa-first logic</h3>
+            <p>Target ZA-focused domains and South African mobile patterns for better relevance in local sourcing campaigns.</p>
+          </article>
+          <article class="card">
+            <h3>Compliance-aware workflow design</h3>
+            <p>Use conservative discovery patterns, robots-awareness, and DNC suppression as operational safeguards within your pipeline.</p>
+          </article>
+          <article class="card">
+            <h3>Operational flexibility</h3>
+            <p>Run from a launcher, the command line, or collector workflows depending on how your team prefers to operate.</p>
+          </article>
+          <article class="card">
+            <h3>Export readiness</h3>
+            <p>Produce dialer-ready CSV outputs rather than leaving teams with raw, inconsistent, or unstructured scrape data.</p>
+          </article>
+        </div>
+      </div>
+    </section>
 
-  function loginWithFacebook() {
-    FB.login(function(response) {
-      if (response.authResponse) {
-        fetchUserProfile();
-      } else {
-        alert("Login cancelled.");
-      }
-    }, {
-      scope: 'public_profile'
-    });
-  }
+    <section id="seo">
+      <div class="container">
+        <div class="section-head">
+          <h2>SEO and discoverability checklist built into this page</h2>
+          <p>This is the part most landing pages miss. The page is not just visually structured; it is annotated for indexing, sharing, entity understanding, and local relevance.</p>
+        </div>
+        <div class="grid-2">
+          <article class="card">
+            <h3>Included technical SEO elements</h3>
+            <ul class="seo-list">
+              <li>Canonical URL and hreflang</li>
+              <li>Open Graph and Twitter card tags</li>
+              <li>Robots directives and theme color metadata</li>
+              <li>SoftwareApplication, Organization, WebSite, FAQPage, BreadcrumbList, and LocalBusiness schema</li>
+              <li>Geo meta tags for Google and local indexing context</li>
+              <li>Accessible heading hierarchy and semantic HTML5 layout</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>Recommended next deployment upgrades</h3>
+            <ul class="seo-list">
+              <li>Publish a real social preview image at 1200×630</li>
+              <li>Add favicon, web manifest, and touch icons</li>
+              <li>Connect Google Search Console and Bing Webmaster Tools</li>
+              <li>Generate an XML sitemap and robots.txt at deployment</li>
+              <li>Add event tracking for CTA clicks, form submissions, and outbound demo requests</li>
+              <li>Replace placeholder URLs with the final production domain and asset paths</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
 
-  function fetchUserProfile() {
-    FB.api('/me', { fields: 'id,name,picture' }, function(response) {
-      const profileDiv = document.getElementById('profile');
-      profileDiv.innerHTML = `
-        <h3>Connected User</h3>
-        <p><strong>Name:</strong> ${response.name}</p>
-        <p><strong>ID:</strong> ${response.id}</p>
-        <img src="${response.picture.data.url}" width="100" />
-      `;
-    });
-  }
-</script>
+    <section>
+      <div class="container">
+        <div class="cta-band">
+          <h2>Need this page deployed for production?</h2>
+          <p>
+            This HTML is ready to adapt into a GitHub Pages, Firebase Hosting, static site, or brochure-style landing page deployment.
+            Replace the placeholder asset URLs, set the final domain, wire up the contact CTA, and publish.
+          </p>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="mailto:raydo@skunkworks.africa?subject=Deploy%20SkunkScrape%20Landing%20Page">Deploy This Landing Page</a>
+            <a class="btn btn-secondary" href="#contact">View Contact Section</a>
+          </div>
+        </div>
+      </div>
+    </section>
 
+    <section id="faq">
+      <div class="container">
+        <div class="section-head">
+          <h2>Frequently asked questions</h2>
+          <p>These FAQs are included both for human readers and to support FAQ rich results through structured data.</p>
+        </div>
+        <div class="faq-wrap">
+          <article class="faq-item">
+            <h3>What does SkunkScrape actually help teams do?</h3>
+            <p>It helps teams discover websites, pull contact signals from likely pages, normalize South African mobile numbers, suppress DNC records, and export operational lead files.</p>
+          </article>
+          <article class="faq-item">
+            <h3>Is it only a scraper?</h3>
+            <p>No. The current project direction includes launch, orchestration, search/import, discovery, collection, filtering, scoring, and export capabilities rather than just a raw crawl script.</p>
+          </article>
+          <article class="faq-item">
+            <h3>Can this support South African prospecting workflows?</h3>
+            <p>Yes. The project includes ZA domain handling, South African mobile detection logic, and source generation patterns designed around South African sourcing contexts.</p>
+          </article>
+          <article class="faq-item">
+            <h3>Does this landing page include social media optimization?</h3>
+            <p>Yes. Open Graph, Twitter card metadata, image descriptors, local business schema, and preview-friendly content blocks are included.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container grid-2">
+        <article class="card">
+          <h2>Contact and local presence</h2>
+          <p class="lead" style="font-size:1rem;">
+            SkunkScrape is presented here as a Skunkworks offering. The section below is structured for both user conversion and local SEO reinforcement.
+          </p>
+          <ul class="timeline">
+            <li><strong>Business:</strong> Skunkworks (Pty) Ltd</li>
+            <li><strong>Email:</strong> <a href="mailto:raydo@skunkworks.africa">raydo@skunkworks.africa</a></li>
+            <li><strong>Phone:</strong> <a href="tel:+27833807950">+27 83 380 7950</a></li>
+            <li><strong>Address:</strong> 26 2nd Avenue, Germiston, 1401, Gauteng, South Africa</li>
+            <li><strong>Website:</strong> <a href="https://www.skunkworks.africa/" target="_blank" rel="noopener">www.skunkworks.africa</a></li>
+          </ul>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="mailto:raydo@skunkworks.africa?subject=SkunkScrape%20Enquiry">Email Skunkworks</a>
+            <a class="btn btn-secondary" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=26+2nd+Avenue+Germiston+1401+Gauteng+South+Africa">Open in Google Maps</a>
+          </div>
+          <p class="micro">For production, replace or confirm address, geo coordinates, social handles, and the final SkunkScrape domain before launch.</p>
+        </article>
+        <article class="map-card" aria-label="Google Maps location">
+          <iframe
+            title="Skunkworks location map"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            src="https://www.google.com/maps?q=26%202nd%20Avenue%20Germiston%201401%20Gauteng%20South%20Africa&output=embed"></iframe>
+          <div class="map-body">
+            <h3>Google Maps embed included</h3>
+            <p>This embed, paired with LocalBusiness schema and geo metadata, strengthens the page’s local business signals and supports branded search intent.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-grid">
+      <div>
+        <div class="brand" style="margin-bottom:10px;">
+          <span class="brand-mark">🦨</span>
+          <span>SkunkScrape</span>
+        </div>
+        <p>
+          A Skunkworks-built platform for lead discovery, contact extraction, ZA-focused sourcing,
+          and dialer-ready export workflows.
+        </p>
+        <p class="tiny">© 2026 SkunkScrape / Skunkworks (Pty) Ltd. All rights reserved.</p>
+      </div>
+      <div>
+        <h3>Platform</h3>
+        <div class="footer-links">
+          <a href="#platform">How it works</a>
+          <a href="#features">Features</a>
+          <a href="#seo">SEO readiness</a>
+          <a href="#faq">FAQs</a>
+        </div>
+      </div>
+      <div>
+        <h3>Contact</h3>
+        <div class="footer-links">
+          <a href="mailto:raydo@skunkworks.africa">raydo@skunkworks.africa</a>
+          <a href="tel:+27833807950">+27 83 380 7950</a>
+          <a href="https://www.skunkworks.africa/" target="_blank" rel="noopener">Skunkworks Africa</a>
+          <a href="https://www.google.com/maps/search/?api=1&query=26+2nd+Avenue+Germiston+1401+Gauteng+South+Africa" target="_blank" rel="noopener">Google Maps</a>
+        </div>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>
