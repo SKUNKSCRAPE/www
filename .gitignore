@@ -1,12 +1,72 @@
-
-# Local secrets / temp files
-proxies.txt
-saved_resource
-sdk.js.download
-SkunkScrape – Meta Business Connect.html
+# Python bytecode / cache
 __pycache__/
 *.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Packaging / build artefacts
+build/
+dist/
 *.egg-info/
+.eggs/
+pip-wheel-metadata/
+
+# Test / lint / type-check caches
 .pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+coverage.xml
+htmlcov/
+
+# IDE / editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Local env / secrets
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
 data/logs/
+
+# Generated outputs
 data/output/
+
+# Local runtime / temp
+tmp/
+temp/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Node (if frontend work happens in this repo)
+node_modules/
+.next/
+out/
+coverage/
+
+# Local database files
+*.sqlite
+*.db
+
+# PyInstaller / executable packaging
+*.spec
+
+# Keep folders if needed
+!data/.gitkeep
+!data/logs/.gitkeep
+!data/output/.gitkeep
