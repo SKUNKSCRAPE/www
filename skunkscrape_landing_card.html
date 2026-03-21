@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SkunkScrape | Minimal Lead Discovery Tool</title>
+  <meta name="description" content="SkunkScrape is a streamlined lead discovery and scraping tool built by Skunkworks for modern prospecting, source discovery, and contact intelligence workflows." />
+  <meta name="keywords" content="SkunkScrape, lead scraping, source discovery, prospecting tool, contact discovery, scraping platform, Skunkworks" />
+  <meta name="author" content="Skunkworks (Pty) Ltd" />
+  <meta name="robots" content="index,follow,max-image-preview:large" />
+  <meta name="theme-color" content="#0b0f19" />
+  <meta name="color-scheme" content="dark" />
+  <link rel="canonical" href="https://skunkscrape.com/" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="SkunkScrape | Minimal Lead Discovery Tool" />
+  <meta property="og:description" content="A fast, modern landing card for entering the SkunkScrape tool." />
+  <meta property="og:site_name" content="SkunkScrape" />
+  <meta property="og:url" content="https://skunkscrape.com/" />
+  <meta property="og:image" content="https://skunkscrape.com/og-image.jpg" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="SkunkScrape | Minimal Lead Discovery Tool" />
+  <meta name="twitter:description" content="A responsive, animated one-page landing card for SkunkScrape." />
+  <meta name="twitter:image" content="https://skunkscrape.com/og-image.jpg" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "SkunkScrape",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Windows, Web",
+    "description": "SkunkScrape is a lead discovery and scraping tool for prospecting, source discovery, and contact intelligence workflows.",
+    "creator": {
+      "@type": "Organization",
+      "name": "Skunkworks (Pty) Ltd"
+    },
+    "url": "https://skunkscrape.com/"
+  }
+  </script>
+
+  <style>
+    :root {
+      --bg: #070b14;
+      --bg-2: #0b1220;
+      --panel: rgba(13, 18, 32, 0.72);
+      --panel-border: rgba(255,255,255,0.12);
+      --text: #f5f7fb;
+      --muted: #a8b0c2;
+      --accent: #7cffe1;
+      --accent-2: #6ea8ff;
+      --shadow: 0 18px 60px rgba(0, 0, 0, 0.35);
+      --radius: 28px;
+      --max: 1120px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at 15% 20%, rgba(110,168,255,0.20), transparent 0 28%),
+        radial-gradient(circle at 85% 25%, rgba(124,255,225,0.14), transparent 0 22%),
+        radial-gradient(circle at 50% 100%, rgba(124,255,225,0.10), transparent 0 26%),
+        linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%);
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    body::before,
+    body::after {
+      content: "";
+      position: fixed;
+      inset: auto;
+      width: 32rem;
+      height: 32rem;
+      border-radius: 50%;
+      filter: blur(90px);
+      pointer-events: none;
+      opacity: .22;
+      z-index: 0;
+      animation: floatBlob 14s ease-in-out infinite;
+    }
+
+    body::before {
+      top: -8rem;
+      left: -10rem;
+      background: var(--accent-2);
+    }
+
+    body::after {
+      right: -8rem;
+      bottom: -8rem;
+      background: var(--accent);
+      animation-delay: -6s;
+    }
+
+    .shell {
+      position: relative;
+      z-index: 1;
+      width: min(calc(100% - 2rem), var(--max));
+      margin: 0 auto;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 2rem 0;
+    }
+
+    .card {
+      width: 100%;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--panel-border);
+      border-radius: var(--radius);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02)),
+        var(--panel);
+      backdrop-filter: blur(18px) saturate(150%);
+      box-shadow: var(--shadow);
+      padding: clamp(1.25rem, 2vw, 1.5rem);
+      isolation: isolate;
+      animation: cardReveal .9s cubic-bezier(.2,.8,.2,1) both;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(120deg, transparent 0%, rgba(255,255,255,0.08) 20%, transparent 36%),
+        radial-gradient(circle at top right, rgba(124,255,225,.14), transparent 28%);
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: .85rem;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .brand-mark {
+      width: 2.8rem;
+      height: 2.8rem;
+      border-radius: 16px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, rgba(124,255,225,.20), rgba(110,168,255,.22));
+      border: 1px solid rgba(255,255,255,.12);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.08);
+      font-size: 1.25rem;
+    }
+
+    .brand-text strong {
+      display: block;
+      font-size: .98rem;
+      letter-spacing: .02em;
+    }
+
+    .brand-text span {
+      color: var(--muted);
+      font-size: .86rem;
+    }
+
+    .status {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      padding: .55rem .8rem;
+      border-radius: 999px;
+      color: #dffef5;
+      background: rgba(124,255,225,.08);
+      border: 1px solid rgba(124,255,225,.18);
+      font-size: .82rem;
+      white-space: nowrap;
+    }
+
+    .status-dot {
+      width: .5rem;
+      height: .5rem;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 0 0 rgba(124,255,225,.7);
+      animation: pulse 2s infinite;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: clamp(1rem, 3vw, 2rem);
+      align-items: stretch;
+    }
+
+    .hero-copy,
+    .hero-panel {
+      min-width: 0;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: .55rem;
+      padding: .45rem .7rem;
+      border-radius: 999px;
+      color: var(--accent);
+      border: 1px solid rgba(124,255,225,.16);
+      background: rgba(124,255,225,.05);
+      font-size: .82rem;
+      margin-bottom: 1rem;
+    }
+
+    h1 {
+      font-size: clamp(2.2rem, 6vw, 4.8rem);
+      line-height: .95;
+      letter-spacing: -.045em;
+      margin: 0 0 1rem;
+      max-width: 10ch;
+    }
+
+    h1 .accent {
+      color: var(--accent);
+      text-shadow: 0 0 24px rgba(124,255,225,.16);
+    }
+
+    .lead {
+      font-size: clamp(1rem, 2.2vw, 1.14rem);
+      line-height: 1.7;
+      color: var(--muted);
+      max-width: 62ch;
+      margin: 0 0 1.5rem;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: .85rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .btn {
+      appearance: none;
+      border: 0;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: .65rem;
+      min-height: 3.25rem;
+      padding: .95rem 1.2rem;
+      border-radius: 18px;
+      font-weight: 700;
+      transition: transform .24s ease, box-shadow .24s ease, background .24s ease, border-color .24s ease;
+      will-change: transform;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      color: #06120f;
+      background: linear-gradient(135deg, var(--accent), #b0fff0);
+      box-shadow: 0 14px 30px rgba(124,255,225,.20);
+    }
+
+    .btn-secondary {
+      color: var(--text);
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.10);
+    }
+
+    .btn:hover,
+    .btn:focus-visible {
+      transform: translateY(-2px);
+      outline: none;
+    }
+
+    .btn-primary:hover,
+    .btn-primary:focus-visible {
+      box-shadow: 0 18px 34px rgba(124,255,225,.28);
+    }
+
+    .btn-secondary:hover,
+    .btn-secondary:focus-visible {
+      background: rgba(255,255,255,.08);
+      border-color: rgba(255,255,255,.18);
+    }
+
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .75rem;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: .55rem;
+      padding: .75rem .9rem;
+      border-radius: 999px;
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.08);
+      color: var(--muted);
+      font-size: .9rem;
+    }
+
+    .hero-panel {
+      display: grid;
+      grid-template-rows: auto auto;
+      gap: 1rem;
+    }
+
+    .visual {
+      position: relative;
+      overflow: hidden;
+      border-radius: 24px;
+      min-height: 360px;
+      border: 1px solid rgba(255,255,255,.10);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02)),
+        linear-gradient(135deg, rgba(110,168,255,.18), rgba(124,255,225,.08));
+    }
+
+    .grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.05) 1px, transparent 1px);
+      background-size: 24px 24px;
+      mask-image: radial-gradient(circle at center, black 30%, transparent 92%);
+      opacity: .55;
+    }
+
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(4px);
+      animation: floatOrb 9s ease-in-out infinite;
+    }
+
+    .orb.one {
+      width: 140px;
+      height: 140px;
+      background: radial-gradient(circle at 35% 35%, rgba(124,255,225,.95), rgba(124,255,225,.15) 60%, transparent 72%);
+      top: 12%;
+      right: 10%;
+    }
+
+    .orb.two {
+      width: 190px;
+      height: 190px;
+      background: radial-gradient(circle at 35% 35%, rgba(110,168,255,.85), rgba(110,168,255,.12) 62%, transparent 72%);
+      bottom: 2%;
+      left: -2%;
+      animation-delay: -3s;
+    }
+
+    .mock-window {
+      position: absolute;
+      inset: auto 1rem 1rem 1rem;
+      border-radius: 20px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(7,11,20,.72);
+      box-shadow: 0 22px 60px rgba(0,0,0,.26);
+      padding: 1rem;
+      backdrop-filter: blur(12px);
+      animation: riseIn 1s .18s both;
+    }
+
+    .mock-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .dots {
+      display: flex;
+      gap: .35rem;
+    }
+
+    .dots span {
+      width: .56rem;
+      height: .56rem;
+      border-radius: 50%;
+      background: rgba(255,255,255,.22);
+    }
+
+    .mock-title {
+      font-size: .84rem;
+      color: var(--muted);
+    }
+
+    .stack {
+      display: grid;
+      gap: .72rem;
+    }
+
+    .line,
+    .stat,
+    .tag {
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,.08);
+      background: rgba(255,255,255,.04);
+    }
+
+    .line { height: 2.85rem; }
+    .line.small { height: 2.3rem; width: 72%; }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: .7rem;
+      margin-top: .2rem;
+    }
+
+    .stat {
+      padding: .85rem;
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 1.1rem;
+      margin-bottom: .2rem;
+    }
+
+    .stat span {
+      font-size: .8rem;
+      color: var(--muted);
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .55rem;
+      margin-top: .35rem;
+    }
+
+    .tag {
+      padding: .55rem .7rem;
+      color: #d7def1;
+      font-size: .82rem;
+    }
+
+    .bottom-strip {
+      margin-top: 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(255,255,255,.08);
+      color: var(--muted);
+      font-size: .9rem;
+    }
+
+    .bottom-strip a {
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .bottom-strip a:hover,
+    .bottom-strip a:focus-visible {
+      color: var(--accent);
+      outline: none;
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0,0,0,0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+
+      h1 { max-width: 12ch; }
+      .visual { min-height: 320px; }
+    }
+
+    @media (max-width: 640px) {
+      .shell {
+        width: min(calc(100% - 1rem), var(--max));
+        padding: .5rem 0;
+      }
+
+      .card {
+        border-radius: 24px;
+        padding: 1rem;
+      }
+
+      .topbar,
+      .bottom-strip {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .actions,
+      .meta {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      .stats {
+        grid-template-columns: 1fr;
+      }
+
+      .visual {
+        min-height: 300px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
+      }
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(124,255,225,.55); }
+      70% { box-shadow: 0 0 0 10px rgba(124,255,225,0); }
+      100% { box-shadow: 0 0 0 0 rgba(124,255,225,0); }
+    }
+
+    @keyframes floatBlob {
+      0%, 100% { transform: translate3d(0,0,0) scale(1); }
+      50% { transform: translate3d(0, 20px, 0) scale(1.06); }
+    }
+
+    @keyframes floatOrb {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-16px); }
+    }
+
+    @keyframes cardReveal {
+      from { opacity: 0; transform: translateY(18px) scale(.985); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    @keyframes riseIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <section class="card" aria-labelledby="hero-title">
+      <div class="topbar">
+        <a class="brand" href="/" aria-label="SkunkScrape home">
+          <div class="brand-mark" aria-hidden="true">🦨</div>
+          <div class="brand-text">
+            <strong>SkunkScrape</strong>
+            <span>Lead discovery by Skunkworks</span>
+          </div>
+        </a>
+
+        <div class="status" aria-label="tool status">
+          <span class="status-dot" aria-hidden="true"></span>
+          <span>Ready to launch</span>
+        </div>
+      </div>
+
+      <div class="hero">
+        <div class="hero-copy">
+          <div class="eyebrow">Minimal. Fast. Purpose-built.</div>
+          <h1 id="hero-title">Enter the <span class="accent">SkunkScrape</span> tool.</h1>
+          <p class="lead">
+            A clean one-page entry card for your scraping and lead intelligence workflow. Designed for speed, clarity, responsiveness, and modern visual polish across desktop and mobile.
+          </p>
+
+          <div class="actions">
+            <a class="btn btn-primary" href="#enter-tool" onclick="handleEnter(event)">
+              Open Tool
+              <span aria-hidden="true">→</span>
+            </a>
+            <a class="btn btn-secondary" href="#features">View details</a>
+          </div>
+
+          <div class="meta" id="features" aria-label="feature highlights">
+            <div class="pill">Responsive card layout</div>
+            <div class="pill">SEO and social metadata</div>
+            <div class="pill">Lightweight motion design</div>
+          </div>
+        </div>
+
+        <div class="hero-panel" aria-hidden="true">
+          <div class="visual">
+            <div class="grid"></div>
+            <div class="orb one"></div>
+            <div class="orb two"></div>
+
+            <div class="mock-window">
+              <div class="mock-top">
+                <div class="dots"><span></span><span></span><span></span></div>
+                <div class="mock-title">SkunkScrape launcher</div>
+              </div>
+              <div class="stack">
+                <div class="line"></div>
+                <div class="line small"></div>
+                <div class="stats">
+                  <div class="stat"><strong>Fast</strong><span>Single action entry</span></div>
+                  <div class="stat"><strong>Clean</strong><span>Minimal UI surface</span></div>
+                  <div class="stat"><strong>Ready</strong><span>Optimised for scale</span></div>
+                </div>
+                <div class="tags">
+                  <div class="tag">Prospecting</div>
+                  <div class="tag">Discovery</div>
+                  <div class="tag">Automation</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bottom-strip">
+        <span>Built for modern scraping workflows and launch-ready user entry.</span>
+        <a id="enter-tool" href="#" onclick="handleEnter(event)">Launch SkunkScrape</a>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const ENTER_URL = "#";
+
+    function handleEnter(event) {
+      event.preventDefault();
+      if (ENTER_URL && ENTER_URL !== "#") {
+        window.location.href = ENTER_URL;
+        return;
+      }
+      const button = event.currentTarget;
+      const original = button.textContent;
+      button.textContent = "Set your tool URL";
+      setTimeout(() => {
+        button.textContent = original;
+      }, 1400);
+    }
+  </script>
+</body>
+</html>
