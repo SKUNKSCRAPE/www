@@ -1,0 +1,16 @@
+{
+  "app": {
+    "name": "SkunkScrape",
+    "version": "2.2.0",
+    "description": "Plugin manifest for the SkunkScrape GUI launcher and CLI orchestrator."
+  },
+  "categories": {
+    "lead_generation": {
+      "label": "Lead Generation",
+      "description": "Contact discovery and business lead extraction workflows.",
+      "plugins": [
+        "smart_contact_crawler"
+      ]
+    }
+  }
+}

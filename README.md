@@ -1,62 +1,48 @@
-<<<<<<< HEAD
-# SkunkScrape Web Console
+# SkunkScrape
 
-Production-lean scaffold for a non-Firebase SkunkScrape web platform:
+SkunkScrape is a non-Firebase web console and plugin-driven scraping toolkit for Skunkworks.
+It combines a production-lean web platform direction with modular scraping, contact discovery,
+and future SaaS automation workflows.
 
-- **Frontend:** Next.js App Router + TypeScript + Tailwind
-- **Backend:** FastAPI + SQLAlchemy + Alembic-ready layout
-- **Queue/Cache:** Redis
-- **Async jobs:** Celery
-- **Database:** PostgreSQL
-- **Edge:** Nginx
-- **Runtime:** Docker Compose
+## Platform Scope
 
-## What is included
+SkunkScrape currently covers two aligned tracks:
 
-- Marketing landing page
-- Auth-ready login placeholder flow
-- Dashboard
-- Create scrape job form
-- Job list + job detail
-- FastAPI health endpoint
-- Job CRUD API
-- Celery worker skeleton
-- Dockerised local stack
-- Nginx reverse proxy template
-- Structured repo layout for production extension
+- **Web Console**: a production-lean non-Firebase platform direction for dashboard, orchestration, and operator workflows
+- **Scraping Toolkit**: a plugin-based Python architecture for crawling, contact discovery, exports, and automation
 
-## Run locally
+## Current Implemented Components
 
-1. Copy environment file:
-   ```bash
-   cp .env.example .env
-   ```
+- Root CLI orchestrator: `main.py`
+- Plugin package: `skunkscrape.plugins`
+- Plugin manifest: `skunkscrape/plugins/manifest.json`
+- Working crawler: `smart_contact_crawler`
+- Test suite under `tests/`
+- Structured logs under `data/logs/`
+- Structured outputs under `data/output/`
 
-2. Start the stack:
-   ```bash
-   docker compose up --build
-   ```
+## Project Structure
 
-3. Open:
-   - Frontend: `http://localhost:3000`
-   - API docs: `http://localhost:8000/docs`
-
-## Suggested next steps
-
-- Replace placeholder auth with Auth.js, Keycloak, or your preferred IdP
-- Add Alembic migrations
-- Add RBAC tables and middleware
-- Wire Celery tasks to your existing SkunkScrape plugins
-- Add object storage for exports
-- Add WebSocket or SSE updates for live job status
-
-## Mapping to your current codebase
-
-This scaffold is designed to wrap your existing Python execution flow:
-- CLI orchestration in `main.py`
-- desktop launcher concepts in `main_gui.py`
-- collector/export patterns in `skunkscrape_final.py`
-
-=======
-# www
->>>>>>> 8eff454e2a10e57a1c1abb2162b8a3aa98bf7b8b
+```ASCII
+SKUNKSCRAPE/
+|-- backend/
+|   `-- app/
+|       `-- main.py
+|-- data/
+|   |-- logs/
+|   `-- output/
+|       `-- smart_contact_crawler/
+|-- skunkscrape/
+|   |-- __init__.py
+|   `-- plugins/
+|       |-- __init__.py
+|       |-- manifest.json
+|       `-- smart_contact_crawler.py
+|-- tests/
+|   |-- test_main.py
+|   |-- test_manifest.py
+|   `-- test_smart_contact_crawler.py
+|-- main.py
+|-- pyproject.toml
+`-- README.md
+```
