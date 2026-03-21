@@ -48,6 +48,27 @@ Write-Host ""
 Write-Host "[3/4] Git status after staging:" -ForegroundColor Yellow
 git status --short
 
+$staged = git diff --cached --name-only
+
+if (-not $staged) {
+    Write-Host ""
+    Write-Host "No staged changes to commit. Working tree is already clean." -ForegroundColor DarkYellow
+
+    if ($Push.IsPresent) {
+        Write-Host ""
+        Write-Host "[Push] Pushing existing local commits to origin main..." -ForegroundColor Yellow
+        git push origin main
+
+        if ($LASTEXITCODE -ne 0) {
+            Write-Error "Git push failed."
+        }
+    }
+
+    Write-Host ""
+    Write-Host "Commit workflow completed with no new commit required." -ForegroundColor Green
+    exit 0
+}
+
 Write-Host ""
 Write-Host "[4/4] Creating commit..." -ForegroundColor Yellow
 git commit -m $Message
