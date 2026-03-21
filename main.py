@@ -1,7 +1,7 @@
-﻿import argparse
+import argparse
+import json
 import logging
 import subprocess
-import json
 from pathlib import Path
 
 LOG_DIR = Path("data/logs")
@@ -10,7 +10,7 @@ LOG_DIR.mkdir(parents=True, exist_ok=True)
 logging.basicConfig(
     filename=str(LOG_DIR / "main.log"),
     level=logging.INFO,
-    format="%(asctime)s | %(levelname)s | %(message)s"
+    format="%(asctime)s | %(levelname)s | %(message)s",
 )
 log = logging.getLogger("main")
 
@@ -33,27 +33,45 @@ def list_plugins(manifest):
     return plugins
 
 
-def run_plugin(plugin, url=None, depth=None, to_webhook=False, target_leads=None):
+def run_plugin(
+    plugin,
+    url=None,
+    depth=None,
+    to_webhook=False,
+    target_leads=None,
+    proxy_file=None,
+    max_pages=None,
+    timeout=None,
+):
+    effective_proxy_file = proxy_file or DEFAULT_PROXY_FILE
+
     cmd = ["python", "-m", f"skunkscrape.plugins.{plugin}"]
 
     if url:
-        if plugin == "smart_contact_crawler":
-            cmd += ["--url", url]
-        else:
-            cmd += ["--url", url, "--category", url, "--search", url]
+        cmd += ["--url", url]
 
-    if plugin == "smart_contact_crawler" and depth:
-        cmd += ["--depth", str(depth)]
+    if plugin == "smart_contact_crawler":
+        if depth is not None:
+            cmd += ["--depth", str(depth)]
+        if to_webhook:
+            cmd += ["--to-webhook"]
+        if target_leads is not None:
+            cmd += ["--target-leads", str(target_leads)]
+        if effective_proxy_file:
+            cmd += ["--proxy-file", effective_proxy_file]
+        if max_pages is not None:
+            cmd += ["--max-pages", str(max_pages)]
+        if timeout is not None:
+            cmd += ["--timeout", str(timeout)]
+    else:
+        if to_webhook:
+            cmd += ["--to-webhook"]
+        if target_leads is not None:
+            cmd += ["--target-leads", str(target_leads)]
+        if effective_proxy_file:
+            cmd += ["--proxy-file", effective_proxy_file]
 
-    if to_webhook:
-        cmd += ["--to-webhook"]
-
-    if target_leads:
-        cmd += ["--target-leads", str(target_leads)]
-
-    cmd += ["--proxy-file", DEFAULT_PROXY_FILE]
-
-    print(f"`nRunning {plugin} ...")
+    print(f"\nRunning {plugin} ...")
     log.info("Launching %s: %s", plugin, cmd)
 
     try:
@@ -75,17 +93,44 @@ def main():
     parser.add_argument("--depth", type=int, help="Depth for smart_contact_crawler")
     parser.add_argument("--to-webhook", action="store_true", help="Send payload to webhook")
     parser.add_argument("--target-leads", type=int, help="Target lead count")
+    parser.add_argument(
+        "--proxy-file",
+        help="Proxy file to pass to plugins. Defaults to the configured SkunkScrape proxy file.",
+    )
+    parser.add_argument(
+        "--max-pages",
+        type=int,
+        help="Maximum pages to crawl for smart_contact_crawler",
+    )
+    parser.add_argument(
+        "--timeout",
+        type=int,
+        help="HTTP timeout in seconds for smart_contact_crawler",
+    )
     args = parser.parse_args()
+
+    proxy_file = getattr(args, "proxy_file", None)
+    max_pages = getattr(args, "max_pages", None)
+    timeout = getattr(args, "timeout", None)
+
+    def build_run_kwargs():
+        kwargs = {
+            "url": args.url,
+            "depth": args.depth,
+            "to_webhook": args.to_webhook,
+            "target_leads": args.target_leads,
+        }
+        if proxy_file is not None:
+            kwargs["proxy_file"] = proxy_file
+        if max_pages is not None:
+            kwargs["max_pages"] = max_pages
+        if timeout is not None:
+            kwargs["timeout"] = timeout
+        return kwargs
 
     if args.all:
         for plugin in plugins:
-            run_plugin(
-                plugin,
-                url=args.url,
-                depth=args.depth,
-                to_webhook=args.to_webhook,
-                target_leads=args.target_leads,
-            )
+            run_plugin(plugin, **build_run_kwargs())
         return
 
     if args.category:
@@ -95,13 +140,7 @@ def main():
             return
 
         for plugin in manifest["categories"][args.category]["plugins"]:
-            run_plugin(
-                plugin,
-                url=args.url,
-                depth=args.depth,
-                to_webhook=args.to_webhook,
-                target_leads=args.target_leads,
-            )
+            run_plugin(plugin, **build_run_kwargs())
         return
 
     if args.plugin:
@@ -110,13 +149,7 @@ def main():
             print("Available plugins:", ", ".join(sorted(plugins.keys())))
             return
 
-        run_plugin(
-            args.plugin,
-            url=args.url,
-            depth=args.depth,
-            to_webhook=args.to_webhook,
-            target_leads=args.target_leads,
-        )
+        run_plugin(args.plugin, **build_run_kwargs())
         return
 
     parser.print_help()
@@ -124,5 +157,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-
