@@ -1,0 +1,37 @@
+SkunkScrape Release Snapshot
+Generated: 2026-03-21 06:18:17
+
+[Python]
+Python 3.14.0
+
+[Git]
+Branch: main
+Latest Commit: 8dfb33686b959e260a56c9f2d0053ea20d822921 | 2026-03-21 05:40:30 +0200 | Add repo health scripts and run plugin option tests
+
+[Pytest]
+............................                                             [100%]
+28 passed in 0.32s
+
+[Git Status]
+A  CHANGELOG.md
+A  scripts/bootstrap_dev.ps1
+A  scripts/clean_artifacts.ps1
+A  tests/test_changelog_exists.py
+A  tests/test_operational_scripts.py
+?? data/
+?? scripts/release_snapshot.ps1
+
+[Key Paths]
+[OK]   .\main.py
+[OK]   .\pyproject.toml
+[OK]   .\README.md
+[OK]   .\CHANGELOG.md
+[OK]   .\skunkscrape\plugins\manifest.json
+[OK]   .\scripts
+[OK]   .\tests
+
+[Recent Logs]
+smart_contact_crawler.log | 03/21/2026 05:43:52 | 0 bytes
+
+[Recent Outputs]
+

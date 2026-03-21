@@ -1,0 +1,43 @@
+name: Release Check
+
+on:
+  push:
+    branches:
+      - main
+      - master
+  pull_request:
+
+jobs:
+  release-check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          submodules: false
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Upgrade pip
+        run: python -m pip install --upgrade pip
+
+      - name: Install project
+        run: python -m pip install -e .
+
+      - name: Install pytest
+        run: python -m pip install -U pytest
+
+      - name: Run tests
+        run: python -m pytest
+
+      - name: Check release files
+        run: |
+          test -f CHANGELOG.md
+          test -f README.md
+          test -f scripts/tag_release.ps1
+          test -f scripts/version_bump.ps1
+          test -f scripts/release_snapshot.ps1

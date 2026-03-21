@@ -1,7 +1,7 @@
 {
   "app": {
     "name": "SkunkScrape",
-    "version": "2.2.0",
+    "version": "2.2.1",
     "description": "Plugin manifest for the SkunkScrape GUI launcher and CLI orchestrator."
   },
   "categories": {

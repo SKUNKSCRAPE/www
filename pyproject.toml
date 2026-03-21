@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "skunkscrape"
-version = "2.2.0"
+version = "2.2.1"
 description = "SkunkScrape plugin-driven scraping and contact discovery toolkit."
 readme = "README.md"
 requires-python = ">=3.11"
