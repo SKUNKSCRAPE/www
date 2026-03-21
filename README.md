@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # SkunkScrape Web Console
 
 Production-lean scaffold for a non-Firebase SkunkScrape web platform:
@@ -56,3 +57,6 @@ This scaffold is designed to wrap your existing Python execution flow:
 - desktop launcher concepts in `main_gui.py`
 - collector/export patterns in `skunkscrape_final.py`
 
+=======
+# www
+>>>>>>> 8eff454e2a10e57a1c1abb2162b8a3aa98bf7b8b
