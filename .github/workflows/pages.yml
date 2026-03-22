@@ -1,4 +1,4 @@
-name: Deploy static site to Pages
+name: Deploy GitHub Pages
 
 on:
   push:
@@ -15,36 +15,35 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  build:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-        with:
-          submodules: false
 
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
-
-      - name: Prepare artifact
+      - name: Prepare site
         run: |
-          mkdir -p _site
-          cp -r ./* _site/ || true
-          cp -r .[^.]* _site/ || true
-          rm -rf _site/.git _site/.github
+          mkdir -p ./_site
+          cp index.html ./_site/
+          cp CNAME ./_site/
+          touch ./_site/.nojekyll
+          [ -f favicon.ico ] && cp favicon.ico ./_site/ || true
+          [ -d assets ] && cp -r assets ./_site/assets || true
+          [ -d public ] && cp -r public ./_site/public || true
+          [ -f skunkscrape_landing_card.html ] && cp skunkscrape_landing_card.html ./_site/ || true
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./_site
 
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-      - name: Deploy to GitHub Pages
+      - name: Deploy
         id: deployment
         uses: actions/deploy-pages@v4
